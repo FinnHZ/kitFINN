@@ -87,8 +87,12 @@ def translateText(event=None, rootname=None):
         # this address should be changed as your location of  Tesseract-OCR
         pytesseract.pytesseract.tesseract_cmd = r'C:\\Program Files\\Tesseract-OCR\\tesseract' 
         string_picture = pytesseract.image_to_string(r'./img/screenShot_tem_translate.png')
+        #！！！！！！！   string_picture = pytesseract.image_to_string(Image.open('图片路径'), lang='chi_sim', config='-psm 6')
         translator = Translator()
+
         result_translate = translator.translate(string_picture, src='en', dest='zh-cn')
+        print(result_translate)
+
         os.remove('./img/screenShot_tem_translate.png')
         os.remove('./img/screenshotTest.png')
         newWin.destroy()
